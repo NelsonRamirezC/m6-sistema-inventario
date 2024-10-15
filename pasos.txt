@@ -1,0 +1,28 @@
+1. python -m venv venv
+2. .\venv\Scripts\activate
+3. pip install django
+4. django-admin startproject sistema_inventario
+5. cambiarse al directorio del proyecto recién creado.
+6.- python manage.py migrate
+7.- python manage.py runserver
+8.- crear en el proyecto (mismo directorio en el cual se encuentra manage.py) el directorio templates.
+9.- agregar dentro del lista de DIRS en nombre 'templates' en settings.py
+'DIRS': ['templates']
+
+10.- agregar configuración de estáticos:
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+    "/var/www/static/",
+]
+11.- crear directorio static -> igual que el directorio de templates
+12.- Crear una app llamada productos: python manage.py startapp productos
+13.- agregar app al archivo settings.py:
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'productos'
+]
