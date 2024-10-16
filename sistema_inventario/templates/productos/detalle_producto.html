@@ -1,0 +1,26 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+
+{% block  estaticos %}
+    <link rel="stylesheet" href="{% static "css/detalle_productos.css" %}">
+{% endblock  %}
+
+{% block contenido %}
+    {% if producto %}
+        <header class="py-3">
+            <h1 class="text-center">{{producto.nombre}}</h1>
+        </header>
+        <main class="container py-3">
+            <section id="detalle-producto">
+                <h2>Detalle del producto</h2>
+                <p>Descripción: {{producto.descripcion}}</p>
+                <p>ID: {{producto.id}}</p>
+                <img src="{% static 'img/productos/'|add:producto.imagen %}" alt="{{producto.nombre}}">
+            </section>
+        </main>
+    {% else %}
+        <header class="py-3">
+            <h1 class="text-center">No existe un producto con ID: {{id}}</h1>
+        </header>
+    {% endif %}
+{% endblock %}
