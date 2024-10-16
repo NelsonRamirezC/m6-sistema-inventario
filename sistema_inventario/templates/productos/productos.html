@@ -1,0 +1,38 @@
+{% extends "layouts/base.html" %}
+
+{% load static %}
+
+{% block vista %}Productos{% endblock %}
+
+
+{% block contenido %}
+    <header>
+        <h1 class="text-center">Vista Productos</h1>
+    </header>
+
+    <main class="container">
+        <section>
+            <h2 class="text-center">Listado de productos</h2>
+            
+            <div class="row g-3" id="productos">
+                {% for producto in  productos %}
+                    <div class="col-12 col-md-6 col-lg-4">
+                        {% comment %} AQUÍ VAN LOS CARDS {% endcomment %}
+                        <div class="card w-100">
+                            {% comment %} <img src="{{producto.imagen}}" class="card-img-top" alt="{{producto.nombre}}"> {% endcomment %}
+                            <img src="{% static 'img/productos/'|add:producto.imagen %}" class="card-img-top" alt="{{producto.nombre}}">
+                            <div class="card-body">
+                              <h5 class="card-title">{{producto.nombre}}</h5>
+                              <div class="contenedor-descripcion">
+                                 <p class="card-text">{{producto.descripcion}}</p>
+                              </div>
+                              <a href="" class="btn btn-primary">Ver detalles</a>
+                            </div>
+                          </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+        </section>
+    </main>
+{% endblock  %}
