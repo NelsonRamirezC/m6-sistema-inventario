@@ -26,7 +26,15 @@
                               <div class="contenedor-descripcion">
                                  <p class="card-text">{{producto.descripcion}}</p>
                               </div>
-                              <a href="" class="btn btn-primary">Ver detalles</a>
+                              <hr>
+                              <p class="card-text {% if producto.stock < 10 %}text-danger{% endif %}">Stock: {{producto.stock}}</p>
+                              {% if producto.descuento > 0 %}
+                              <p class="card-text">Precio anterior: (<span class="text-decoration-line-through">$ {{producto.precio}}</span> - <span class="text-danger">$ {{producto.descuento}}</span>) - Nuevo precio:
+                                <span class="text-success">{{producto.precio_final}}</span></p>
+                              {% else %}
+                              <p class="card-text">Precio: $ {{producto.precio}}</p>
+                              {% endif %}
+                              <a href="{% url 'detalle-producto' id=producto.id %}" class="btn btn-primary">Ver detalles</a>
                             </div>
                           </div>
                     </div>

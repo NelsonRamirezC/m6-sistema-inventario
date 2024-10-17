@@ -16,6 +16,14 @@
                 <p>Descripción: {{producto.descripcion}}</p>
                 <p>ID: {{producto.id}}</p>
                 <img src="{% static 'img/productos/'|add:producto.imagen %}" alt="{{producto.nombre}}">
+
+
+                {% if  producto.stock < 10%} 
+                <h3>Quedan las últimas unidades!</h3>
+                {% endif %}
+                <p>Stock: {{producto.stock}}</p>
+
+                <p>Precio: {{producto.precio}}</p>
             </section>
         </main>
     {% else %}
